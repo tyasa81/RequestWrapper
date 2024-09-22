@@ -24,7 +24,6 @@ php artisan vendor:publish --tag="requestwrapper-config"
 ## Usage
 
 Using Facades:
-
 ```php
 use tyasa81\RequestWrapper\Facades\RequestWrapper;
 $response = RequestWrapper::getUrl("https://httpbin.org/ip",true);
@@ -32,6 +31,7 @@ dd($response);
 ```
 
 Available functions:
+```php
     public static function postUrl($url, $payload, $json=false, &$args=array(), $retry=1, $sleep=1, $timeout=15, $type="POST") 
     public static function getUrl($url, $json=false, &$args=array(), $retry=1, $sleep=1, $timeout=15) 
     public static function postMultiPartUrl($url, $multipart, $json=false, &$args=array(), $retry=1, $sleep=1, $timeout=15, $type="POST") 
@@ -46,17 +46,23 @@ Available functions:
     public static function getCookieValue(CookieJar $cookieJar, string $cookieName)
     public static function convertGuzzleCookieJarToSession(CookieJar $cookieJar)
     public static function getCookieJarFromSession(string $session) 
+```
 
 Using Service Class:
+```php
     $curlwrapper = new CurlWrapper(cookieJar: $cookieJar);
     $response = $curlwrapper->request(url: "https://httpbin.org/ip", json: true);
-    OR
+```
+OR
+```php
     $guzzlewrapper = new GuzzleWrapper(cookieJar: $cookieJar);
     $response = $guzzlewrapper->request(url: "https://httpbin.org/ip", json: true);
-    
-Interface:
-    request(string $url, $payload=null, bool $json=false, array $headers=array(), string $type="POST", string $proxy_type=null, int $proxy_index=null, int $retry=1, int $sleep=1, int $timeout=15, bool $allow_redirects=null, bool $decode_content=null)
+```
 
+Interface:
+```php
+    request(string $url, $payload=null, bool $json=false, array $headers=array(), string $type="POST", string $proxy_type=null, int $proxy_index=null, int $retry=1, int $sleep=1, int $timeout=15, bool $allow_redirects=null, bool $decode_content=null)
+```
 
 ## Testing
 
