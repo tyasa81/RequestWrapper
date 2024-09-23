@@ -49,7 +49,7 @@ class GuzzleWrapper implements RequestWrapperInterface
     {
         $pass = false;
         $return = ['code' => 0, 'content' => null];
-        
+
         self::setHeaders($headers);
         self::setOptions($allow_redirects, $decode_content);
 
@@ -116,7 +116,7 @@ class GuzzleWrapper implements RequestWrapperInterface
                 $return['message'] = $e->getMessage();
                 $return['content'] = null;
                 $return['headers'] = [];
-                
+
             } catch (RequestException $e) { // 400 code
                 $return['code'] = $e->getCode();
                 $return['message'] = $e->getMessage();
