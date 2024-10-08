@@ -18,7 +18,7 @@ class RequestWrapperServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/requestwrapper.php' => config_path('requestwrapper.php'),
-            ], 'config');
+            ], 'requestwrapper-config');
         }
 
     }
