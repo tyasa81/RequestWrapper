@@ -6,13 +6,13 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
-use tyasa81\RequestWrapper\Interfaces\RequestWrapperInterface;
+use tyasa81\RequestWrapper\Contracts\BaseRequestWrapper;
 
-class GuzzleWrapper implements RequestWrapperInterface
+class GuzzleWrapper extends BaseRequestWrapper
 {
     protected $client;
 
-    protected $headers;
+    protected $headers = [];
 
     protected $options;
 
@@ -45,7 +45,7 @@ class GuzzleWrapper implements RequestWrapperInterface
         }
     }
 
-    public function request(string $url, $payload = null, bool $json = false, array $headers = [], string $type = 'POST', ?string $proxy_type = null, ?int $proxy_index = null, int $retry = 1, int $sleep = 1, int $timeout = 15, ?bool $allow_redirects = null, ?bool $decode_content = null)
+    public function request(string $url, $payload = null, bool $json = false, array $headers = [], string $type = 'POST', ?string $proxy_type = null, ?int $proxy_index = null, int $retry = 0, int $sleep = 1, int $timeout = 25, ?bool $allow_redirects = null, ?bool $decode_content = null)
     {
         $pass = false;
         $return = ['code' => 0, 'content' => null];

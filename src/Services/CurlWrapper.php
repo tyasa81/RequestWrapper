@@ -4,9 +4,9 @@ namespace tyasa81\RequestWrapper\Services;
 
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Cookie\SetCookie;
-use tyasa81\RequestWrapper\Interfaces\RequestWrapperInterface;
+use tyasa81\RequestWrapper\Contracts\BaseRequestWrapper;
 
-class CurlWrapper implements RequestWrapperInterface
+class CurlWrapper extends BaseRequestWrapper
 {
     protected $cookieJar;
 
