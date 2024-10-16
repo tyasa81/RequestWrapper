@@ -3,6 +3,7 @@
 namespace tyasa81\RequestWrapper;
 
 use Illuminate\Support\ServiceProvider;
+use tyasa81\RequestWrapper\Services\GuzzleWrapper;
 
 class RequestWrapperServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,8 @@ class RequestWrapperServiceProvider extends ServiceProvider
                 __DIR__.'/../config/requestwrapper.php' => config_path('requestwrapper.php'),
             ], 'requestwrapper-config');
         }
-
+        $this->app->bind('guzzlewrapper', function () {
+            return new GuzzleWrapper;
+        });
     }
 }
