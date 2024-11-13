@@ -62,7 +62,7 @@ class GuzzleWrapper extends BaseRequestWrapper
             if (isset($payload['form_params'])) {
                 $this->options['form_params'] = $payload['form_params'];
             } elseif (isset($payload['body'])) {
-                $this->options['body'] = $payload;
+                $this->options['body'] = $payload['body'];
             } elseif (isset($payload['multipart'])) {
                 $this->options['multipart'] = $payload['multipart'];
             }
@@ -127,10 +127,7 @@ class GuzzleWrapper extends BaseRequestWrapper
                     }
                 } catch (\Exception $error) {
                 }
-                try {
-                    $return['headers'] = $e->getResponse()->getHeaders();
-                } catch (\Exception $error) {
-                }
+                $return['headers'] = $e->getResponse() ? $e->getResponse()->getHeaders() : [];
                 if ($e->getCode() >= 400 && $e->getCode() < 500) { // 400 errors do not retry
                     break;
                 }
