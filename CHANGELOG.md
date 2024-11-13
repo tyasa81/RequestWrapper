@@ -2,6 +2,10 @@
 
 All notable changes to `RequestWrapper` will be documented in this file.
 
+## v1.1.2 - 2024-11-13
+
+Fix bug on payload when using proxy
+
 ## v1.1.1 - 2024-11-13
 
 Fix bug typo of config name
