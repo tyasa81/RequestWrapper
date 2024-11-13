@@ -73,11 +73,11 @@ class GuzzleWrapper extends BaseRequestWrapper
         if ($proxy_type === null) {
             $proxies = [];
         } elseif ($proxy_type == 'SOCKS') {
-            $proxies = config('guzzlewrapper.socksproxies');
+            $proxies = config('requestwrapper.socksproxies');
         } elseif ($proxy_type == 'FAST') {
-            $proxies = config('guzzlewrapper.fastproxies');
+            $proxies = config('requestwrapper.fastproxies');
         } else {
-            $proxies = config('guzzlewrapper.globalproxies');
+            $proxies = config('requestwrapper.globalproxies');
         }
         if ($proxy_index === null || $proxy_index >= count($proxies)) {
             $proxy_index = 0;

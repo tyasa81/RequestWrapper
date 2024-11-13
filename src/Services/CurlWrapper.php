@@ -73,11 +73,11 @@ class CurlWrapper extends BaseRequestWrapper
         // setup proxies
         $proxies = [];
         if ($proxy_type == 'FAST') {
-            $proxies = config('guzzlewrapper.fastproxies');
+            $proxies = config('requestwrapper.fastproxies');
         } elseif ($proxy_type == 'SOCKS') {
-            $proxies = config('guzzlewrapper.socksproxies');
+            $proxies = config('requestwrapper.socksproxies');
         } elseif ($proxy_type !== null) {
-            $proxies = config('guzzlewrapper.globalproxies');
+            $proxies = config('requestwrapper.globalproxies');
         }
 
         if (count($proxies)) {
