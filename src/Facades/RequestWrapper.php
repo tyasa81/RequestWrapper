@@ -105,12 +105,13 @@ class RequestWrapper extends Facade
         $headers = isset($args['headers']) ? $args['headers'] : [];
         $allow_redirects = isset($args['allow_redirects']) ? $args['allow_redirects'] : null;
         $decode_content = isset($args['decode_content']) ? $args['decode_content'] : null;
-        if($type != 'GET') {
+        if ($type != 'GET') {
             $payload = $args['options'];
         }
+
         return $guzzlewrapper->request(url: $url,
             json: $json,
-            payload: $payload ?? "",
+            payload: $payload ?? '',
             headers: $headers,
             type: $type,
             proxy_type: $proxy_type,
