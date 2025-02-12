@@ -31,7 +31,7 @@ class CurlWrapper extends BaseRequestWrapper
         $this->basic_auth = $basic_auth;
     }
 
-    public function request(string $url, $payload = null, bool $json = false, array $headers = [], string $type = 'POST', ?string $proxy_type = null, ?int $proxy_index = null, int $retry = 1, int $sleep = 1, int $timeout = 15, ?bool $allow_redirects = null, ?bool $decode_content = null, ?bool $is_http2 = null, bool $verbose = false)
+    public function request(string $url, $payload = null, bool $json = false, array $headers = [], string $type = 'POST', ?string $proxy_type = null, ?int $proxy_index = null, int $retry = 1, int $sleep = 1, int $timeout = 15, ?bool $allow_redirects = null, ?bool $decode_content = null, ?bool $is_http2 = null, bool $verbose = false, bool $verify_peer = true)
     {
         // return ['code'=>200,'url'=>$url,'payload'=>$payload,'json'=>$json,'args'=>$args,'timeout'=>$timeout,'type'=>$type];
         $debug = [];
@@ -95,6 +95,9 @@ class CurlWrapper extends BaseRequestWrapper
         }
         if ($is_encoded) {
             curl_setopt($ch, CURLOPT_ENCODING, '');
+        }
+        if(!$verify_peer) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         }
         $debug['proxy'] = $proxies;
         if ($allow_redirects) {
