@@ -96,7 +96,7 @@ class CurlWrapper extends BaseRequestWrapper
         if ($is_encoded) {
             curl_setopt($ch, CURLOPT_ENCODING, '');
         }
-        if(!$verify_peer) {
+        if (! $verify_peer) {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         }
         $debug['proxy'] = $proxies;

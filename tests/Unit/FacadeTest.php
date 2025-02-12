@@ -13,7 +13,7 @@ class FacadeTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function test_getUrl(): void
+    public function test_get_url(): void
     {
         $response = RequestWrapper::getUrl('https://httpbin.org/ip', true);
         $this->assertEquals(
@@ -21,7 +21,7 @@ class FacadeTest extends TestCase
             $response['code']);
     }
 
-    public function test_getUrl400Status(): void
+    public function test_get_url400_status(): void
     {
         $response = RequestWrapper::getUrl('https://httpbin.org/status/400', true);
         $this->assertEquals(
@@ -29,7 +29,7 @@ class FacadeTest extends TestCase
             $response['code']);
     }
 
-    public function test_getAsync(): void
+    public function test_get_async(): void
     {
         $urls = [
             ['index' => 0, 'url' => 'https://httpbin.org/ip'],
@@ -47,7 +47,7 @@ class FacadeTest extends TestCase
             $response['responses'][1]['code']);
     }
 
-    public function test_cookiesUpdated(): void
+    public function test_cookies_updated(): void
     {
         $guzzle_options['cookies'] = new CookieJar;
         $response = RequestWrapper::getUrl('https://httpbin.org/cookies/set?hello=world&test=2', true, $guzzle_options);
@@ -62,7 +62,7 @@ class FacadeTest extends TestCase
             $guzzle_options['cookies']->toArray()[1]['Value']);
     }
 
-    public function test_getCookieValue(): void
+    public function test_get_cookie_value(): void
     {
         $guzzle_options['cookies'] = new CookieJar;
         $response = RequestWrapper::getUrl('https://httpbin.org/cookies/set?hello=world&test=2', true, $guzzle_options);
@@ -74,7 +74,7 @@ class FacadeTest extends TestCase
             RequestWrapper::getCookieValue($guzzle_options['cookies'], 'test'));
     }
 
-    public function test_convertCookieJarToSessionAndBack(): void
+    public function test_convert_cookie_jar_to_session_and_back(): void
     {
         $guzzle_options['cookies'] = new CookieJar;
         $response = RequestWrapper::getUrl('https://httpbin.org/cookies/set?hello=world&test=2', true, $guzzle_options);
@@ -89,7 +89,7 @@ class FacadeTest extends TestCase
 
     }
 
-    public function test_postUrl(): void
+    public function test_post_url(): void
     {
         $response = RequestWrapper::postUrl('https://httpbin.org/post', '{"data":1}', true);
         $this->assertEquals(
@@ -97,7 +97,7 @@ class FacadeTest extends TestCase
             $response['code']);
     }
 
-    public function test_requestCurl(): void
+    public function test_request_curl(): void
     {
         $response = RequestWrapper::requestCurl('https://httpbin.org/post', '{"data":1}', true, $guzzle_options, 'POST');
         $this->assertEquals(
@@ -105,7 +105,7 @@ class FacadeTest extends TestCase
             $response['code']);
     }
 
-    public function test_requestCurl400status(): void
+    public function test_request_curl400status(): void
     {
         $response = RequestWrapper::requestCurl('https://httpbin.org/status/400', '{"data":1}', true, $guzzle_options, 'POST');
         $this->assertEquals(
@@ -113,7 +113,7 @@ class FacadeTest extends TestCase
             $response['code']);
     }
 
-    public function test_requestSetCurlCookies(): void
+    public function test_request_set_curl_cookies(): void
     {
         $guzzle_options['cookies'] = new CookieJar;
         $response = RequestWrapper::requestCurl('https://httpbin.org/cookies/set?hello=world&test=2', null, true, $guzzle_options);
@@ -125,7 +125,7 @@ class FacadeTest extends TestCase
             RequestWrapper::getCookieValue($guzzle_options['cookies'], 'test'));
     }
 
-    public function test_requestCurlCookies(): void
+    public function test_request_curl_cookies(): void
     {
         $guzzle_options['cookies'] = new CookieJar;
         $response = RequestWrapper::requestCurl('https://httpbin.org/cookies/set?hello=world&test=2', null, true, $guzzle_options);

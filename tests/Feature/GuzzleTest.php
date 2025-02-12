@@ -9,7 +9,7 @@ use tyasa81\RequestWrapper\Tests\TestCase;
 
 class GuzzleTest extends TestCase
 {
-    public function test_getUrl(): void
+    public function test_get_url(): void
     {
         $response = Guzzle::get('https://httpbin.org/ip', true);
         $this->assertEquals(
@@ -17,7 +17,7 @@ class GuzzleTest extends TestCase
             $response['code']);
     }
 
-    public function test_getUrl400Status(): void
+    public function test_get_url400_status(): void
     {
         $response = Guzzle::get('https://httpbin.org/status/400', true);
         $this->assertEquals(
@@ -25,7 +25,7 @@ class GuzzleTest extends TestCase
             $response['code']);
     }
 
-    public function test_getAsync(): void
+    public function test_get_async(): void
     {
         $urls = [
             ['index' => 0, 'url' => 'https://httpbin.org/ip'],
@@ -43,7 +43,7 @@ class GuzzleTest extends TestCase
             $response['responses'][1]['code']);
     }
 
-    public function test_postUrl(): void
+    public function test_post_url(): void
     {
         $response = Guzzle::post('https://httpbin.org/post', '{"data":1}', true);
         $this->assertEquals([
@@ -55,7 +55,7 @@ class GuzzleTest extends TestCase
         ]);
     }
 
-    public function test_putUrl(): void
+    public function test_put_url(): void
     {
         $response = Guzzle::put('https://httpbin.org/put', '{"data":1}', true);
         // print_r($response);
@@ -68,7 +68,7 @@ class GuzzleTest extends TestCase
         ]);
     }
 
-    public function test_deleteUrl(): void
+    public function test_delete_url(): void
     {
         $response = Guzzle::delete('https://httpbin.org/delete', '{"data":1}', true);
         // print_r($response);
